@@ -4,6 +4,8 @@ import cors from "cors";
 import bp from "body-parser";
 import DbContext from "./db/dbConfig";
 import CarController from "./controllers/CarsController";
+import JobController from "./controllers/JobsController";
+import HouseController from "./controllers/HousesController";
 
 const port = process.env.PORT || 3000;
 
@@ -36,6 +38,8 @@ server.use(bp.json());
 //NOTE next we want to register all our routes(doorways that can be accessed in our app)
 
 server.use("/api/cars", new CarController().router);
+server.use("/api/jobs", new JobController().router);
+server.use("/api/houses", new HouseController().router);
 
 //NOTE Everything below this line always stays the same
 
