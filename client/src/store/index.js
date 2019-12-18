@@ -25,6 +25,9 @@ export default new Vuex.Store({
     addCar(state, car) {
       state.cars.push(car);
     },
+    addJob(state, job) {
+      state.jobs.push(job);
+    },
     setActiveCar(state, car) {
       state.activeCar = car;
     }
@@ -46,6 +49,11 @@ export default new Vuex.Store({
       let res = await _api.post("cars", car);
       // dispatch("getAllCars"); //works but is a second call to the server
       commit("addCar", res.data);
+    },
+    async createJob({ commit, dispatch }, job) {
+      let res = await _api.post("jobs", job);
+      // dispatch("getAllCars"); //works but is a second call to the server
+      commit("addJob", res.data);
     },
 
     async sold({ commit, dispatch }, id) {
